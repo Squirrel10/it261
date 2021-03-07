@@ -1,0 +1,70 @@
+* {
+	padding: 0;
+	margin 0;
+	box-sizing: border-box;
+}
+
+body {
+	background: beige;
+}
+
+form {
+	width: 500px;
+	margin: 30px auto;
+}
+
+label {
+	margin-bottom: 5px;
+	display: block;
+}
+
+legend {
+	font-size: 1.2em;
+	font-style: italic;
+}
+
+input {
+	display: block;
+	margin-bottom: 15px;
+}
+
+fieldset {
+	padding: 10px;
+	
+}
+
+a{
+ text-decoration: none;
+ font-size: 20px;
+ color: green;
+}
+
+ p {
+	font-size: 1.5em;
+	text-align: center;
+	font-size: 50px;
+	 text-shadow: 1px 2px white;
+}
+
+.cool {
+	color:blue;
+	border: 2px solid blue;
+}
+
+
+.not-cool {
+	color:green;
+	border: 2px solid green;
+	
+}
+
+
+.hot {
+	color:orangered;
+	border: 2px solid orangered;
+}
+
+.hottest {
+	color:red;
+	border: 2px solid red;
+}
