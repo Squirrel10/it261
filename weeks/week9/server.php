@@ -1,0 +1,1 @@
+<?php // server page, which will be communicating with our database

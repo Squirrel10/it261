@@ -1,0 +1,41 @@
+/*Styles for my form*/
+
+*{
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+	
+}
+
+
+form {
+	max-width: 580px;
+	margin:20px auto; /* this makes the form centered*/
+}
+
+fieldset {
+	padding: 10px;
+	
+}
+
+label {
+	display: block;
+	margin-bottom: 5px;
+}
+
+.err {
+	display: block;
+	color: red;
+	font-style: italic;
+}
+
+form ul {
+	list-style-type: none;
+	margin-bottom: 10px;
+}
+
+input, select, textarea {
+	margin-bottom: 10ox;
+	
+	
+}

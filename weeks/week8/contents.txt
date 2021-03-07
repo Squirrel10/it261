@@ -1,0 +1,17 @@
+content file
+
+
+Our contents:
+config.php --- is going to call out the credentials.php 
+credentials.php
+people.php
+people-view.php
+
+
+In the big picture if you get this working in your week8 folder.....
+
+
+
+Wesite 
+credentials.php
+
