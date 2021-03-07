@@ -1,0 +1,196 @@
+* {
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+	
+}
+
+body{
+	background:#ffe880;
+	
+}
+
+header{
+	background: #ab6550;
+	list-style-type: none;
+	overflow: hidden;
+	margin-bottom: 20px;
+	padding: 20px 0;
+	
+}
+img {
+   
+	object-fit: contain;
+}
+
+#logo {
+	width: 200px;
+	height:130px;
+	float: left;
+	margin-left: 420px;
+}
+
+.inner-header {
+	width:940px;
+	margin:0 auto;
+
+}
+
+nav {
+	
+	
+}
+
+nav li {
+	float:left;
+	margin-top:25px;
+	margin-left: 25px;
+	font-size: 20px;
+	list-style-type: none;
+	
+	
+}
+nav ul {
+	float:right;
+	margin-right: 250px;
+	
+}
+
+nav a {
+	text-decoration: none;
+	
+}
+
+nav a:hover {
+    color:red;
+	font-size: 25px;
+	
+	
+}
+.active {
+color:red;
+font-weight: bold;
+background: #ffe880;
+border-radius: 20px 15px;
+border:0.7px solid red;
+font-size: 30px;
+}
+
+#wrapper {
+	height: 980px;
+	width:940px;
+	margin: 0 auto;
+	clear: both;
+}
+
+main {
+	
+    background-color: rgb(225,225,224);
+	float:left;
+    margin-bottom: 20px;
+	
+}
+aside {
+	margin: 0 auto;
+	width:400px;
+	float: right;
+
+}
+
+#hero {
+	background: #8aa7ff;
+	height: 300px;
+	margin-bottom: 20px;
+	/*once we have an image we will remove the height of the hero*/
+}
+
+footer {
+  
+	margin: 0 auto;
+	height:50px;
+	line-height: 50px;
+	border-top:1px solid #666;
+	clear:both;
+
+	
+}
+
+
+footer li {
+
+	float: left;
+	margin-right: 30px;
+	list-style-type: none;
+}
+
+footer ul {
+	margin-left: 300px;
+   
+}
+
+
+/* FORM CSS*/
+
+form {
+	
+	max-width: 480px;
+	margin: 0 auto; /* this makes the form centered*/
+}
+
+fieldset {
+    padding:10px;
+	width: 390px;
+
+
+
+}
+
+label {
+	display: block;
+	margin-bottom: 5px;
+}
+
+.err {
+	display: block;
+	color: red;
+	font-style: italic;
+}
+
+form ul {
+	list-style-type: none;
+	margin-bottom: 10px;
+}
+
+ textarea {
+	margin-bottom: 10ox;
+	width: 200px;
+	
+	
+	
+}
+
+
+
+.contact-h1 {
+	color: brown;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
