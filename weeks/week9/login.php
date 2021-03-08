@@ -12,7 +12,7 @@ include('server.php');
 <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']);?>" method="post">
 <fieldset>
 <label>Username</label>
-<input type="text" name="UserName" value="<?php if(isset($_POST['UserName']) echo htmlspecialchars($_POST['Username']));?>">
+<input type="text" name="UserName" value="<?php if(isset($_POST['UserName'])) echo ($_POST['Username']);?>">
 <label>Your Password</label>
 <input type="password" name="Password">
     <?php include('includes/errors.php');?>

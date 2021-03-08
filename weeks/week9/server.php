@@ -126,7 +126,7 @@ if(empty($Password)){
 if(count($errors)==0) {
 $Password = md5($Password);
 
-$query = "SELECT * FROM Users WHERE UserName = '$UserName' AND Password = '$Password' "    
+$query = "SELECT * FROM Users WHERE UserName = '$UserName' AND Password = '$Password' ";    
 //add a query    
     
 $results = mysqli_query($db, $query);
@@ -138,9 +138,10 @@ if(mysqli_num_rows($results) == 1 ) {
     $_SESSION['success'] == $success;
     
     
-    header('Location:index.php')
+    header('Location:index.php');
     
-}  else {
+}
+  else {
     array_push($errors, '<p class="red">Wrong username/password combo</p>');
     
     
