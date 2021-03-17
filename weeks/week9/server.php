@@ -1,150 +1,135 @@
-<?php // server page, which will be communicating with our database
-//session_start()
-// mysqli_real_escape_string--- O'Brien
-// ed5() 
+<?php // server page, which will be communicating with our database!!!! PATRICKSwill be pointing to the config file
+// session_start()
+// mysqli_real_esape_string --- O'Brien
+// md5()
+
+
 
 session_start();
 
 include('config.php');
 
-//initialize the variables
+// initialize the variables
 
 $FirstName = '';
 $LastName = '';
-$Email = ''; 
+$Email = '';
 $UserName = '';
 $errors = array();
-$success = 'You are now logged in';
-
-// connect to the database!!!!!!
+$success = 'You are now logged in!';
 
 
 
-$db = mysqli_connect(DB_HOST,DB_USER,DB_PASSWORD,DB_NAME)
-or die(myError(__FILE__,__LINE__,mysqli_connect_error()));
+// connect to the database!!!!
 
+$db = mysqli_connect(DB_HOST,DB_USER,DB_PASSWORD,DB_NAME) or die(myError(__FILE__,__LINE__,mysqli_connect_error()));
 
 // register the user
 
 if(isset($_POST['reg_user'])) {
-    //receive the information from "FirstName" then taking it and assigning it to the "FirstName" variable.
-    $FirstName = mysqli_real_escape_string($db, $_POST['FirstName']);
-    $LastName = mysqli_real_escape_string($db, $_POST['LastName']);
-    $Email = mysqli_real_escape_string($db, $_POST['Email']);
-    $UserName = mysqli_real_escape_string($db, $_POST['UserName']);
-    $Password_1 = mysqli_real_escape_string($db, $_POST['Password_1']);
-    $Password_2 = mysqli_real_escape_string($db, $_POST['Password_2']);
+ // receive the information  
+$FirstName = mysqli_real_escape_string($db, $_POST['FirstName']);
+$LastName = mysqli_real_escape_string($db, $_POST['LastName']);
+$Email = mysqli_real_escape_string($db, $_POST['Email']);
+$UserName = mysqli_real_escape_string($db, $_POST['UserName']);
+$Password_1 = mysqli_real_escape_string($db, $_POST['Password_1']);
+$Password_2 = mysqli_real_escape_string($db, $_POST['Password_2']);
     
+// arry_push()
     
-    //array push function is going to take the errors and push it through
-    //arry_push()
+if(empty($FirstName)) {
+    array_push($errors, 'First Name is required');
+}
     
-    if(empty($FirstName)){
-        array_push($errors, 'First Name is required');
-    }
-    
-      if(empty($LastName)){
-        array_push($errors, 'Last Name is required');
-    }
-    
-      if(empty($UserName)){
-        array_push($errors, 'User Name is required');
-    }
-    
-      if(empty($Email)){
-        array_push($errors, 'Email is required');
-    }
-    
-      if(empty(Password_1)){
-        array_push($errors, 'Password is required');
-    }
-    
-     if(Password_1 != $Password_2) {
-        array_push($errors, 'Passwords do not match'); //confirming passwords
-    }
-    
-    
-    $user_check_query = "SELECT * FROM Users WHERE UserName = '$UserName' OR Email ='$Email' LIMIT 1  ";
-    
-        
-    
-    $result = mysqli_query($db,  $user_check_query) or die(myError(__FILE__,__LINE__,mysqli_error($db)));	 //refering to $user_check_query
-    
-    $user = mysqli_fetch_assoc($result);
-    
-    if($user) {
-        
-    if($user['UserName'] == $Username) {
-        array_push($errors, 'Username already exists');
-    }
-        
-      if($user['Email'] == $Email) {
-        array_push($errors, 'Email already exists');
-    }    
-        
-    } // ending my big if statement re $user
-    
-    
-// if everything checks out and there are no errors, we need to now insert the data into the database
-    
-    if(count($errors)==0) {
-        $Password = md5($Password_1);
+if(empty($LastName)) {
+    array_push($errors, 'Last Name is required');
+}
 
-    $query = "INSERT INTO Users (FirstName, LastName, UserName, Email, Password) VALUES ('$FirstName', '$LastName', '$UserName', '$Email', '$Password' )";
-    // calling out the values
+if(empty($UserName)) {
+    array_push($errors, 'User name is required');
+}
+    
+if(empty($Email)) {
+    array_push($errors, 'Email is required');
+}
+    
+if(empty($Password_1)) {
+    array_push($errors, 'Password is required');
+}
+    
+if($Password_1 != $Password_2) {
+    array_push($errors, 'Passwords do not match!');
+}
+    
+// start here check to see if there is a username and email!
+    
+$user_check_query = "SELECT * FROM Users WHERE UserName = '$UserName' OR Email = '$Email' LIMIT 1 "; 
+    
+$result = mysqli_query($db, $user_check_query) or die(myError(__FILE__,__LINE__,mysqli_error($db))); 
+    
+$user = mysqli_fetch_assoc($result);
+    
+if($user) {
+ 
+if($user['UserName'] == $Username ) {
+    array_push($errors, 'Username already exists');
+}
+    
+if($user['Email'] == $Email ) {
+    array_push($errors, 'Email already exists');
+}
     
     
-    mysqli_query($db,$query);
+} // ending my big if statement re $user
+    
+// if everything is okay and there are no errors, we need to now insert the data into the database
+    
+if(count($errors) == 0) {
+$Password = md5($Password_1);
+
+    
+$query = "INSERT INTO Users (FirstName, LastName, UserName, Email, Password) VALUES ('$FirstName', '$LastName', '$UserName', '$Email', '$Password')";
+    
+mysqli_query($db,$query);
     
     $_SESSION['UserName'] = $UserName;
-        $_SESSION['success'] = $success;
-      
+     $_SESSION['success'] = $success;
     
     header('Location:login.php');
-    }
-} 
-
+    
+} // end count
+    
+} // close isset
 
 if(isset($_POST['login_user'])) {
-    //receive the information from "FirstName" then taking it and assigning it to the "FirstName" variable.
-    $UserName = mysqli_real_escape_string($db, $_POST['UserName']);
-    $Password = mysqli_real_escape_string($db, $_POST['Password']);
+ // receive the information  
+$UserName = mysqli_real_escape_string($db, $_POST['UserName']);
+$Password = mysqli_real_escape_string($db, $_POST['Password']);
     
+if(empty($UserName)) {
+    array_push($errors, 'User name is required');
+} 
     
-if(empty($UserName)){
-        array_push($errors, 'User Name is required');
-    }
+if(empty($Password)) {
+    array_push($errors, 'Password is required');
+}
     
-    
-if(empty($Password)){
-        array_push($errors, 'Password is required');
-    }
-    
-    
-    
-       
-if(count($errors)==0) {
+if(count($errors) == 0) {
 $Password = md5($Password);
-
-$query = "SELECT * FROM Users WHERE UserName = '$UserName' AND Password = '$Password' ";    
-//add a query    
     
-$results = mysqli_query($db, $query);
+$query = "SELECT * FROM Users WHERE  UserName = '$UserName' AND Password = '$Password'  ";
     
-if(mysqli_num_rows($results) == 1 ) {
+$results = mysqli_query($db,$query);
     
+if(mysqli_num_rows($results) == 1) {
     
-    $_SESSION['UserName'] == $UserName;
-    $_SESSION['success'] == $success;
-    
+    $_SESSION['UserName'] = $UserName;
+     $_SESSION['success'] = $success;
     
     header('Location:index.php');
     
-}
-  else {
-    array_push($errors, '<p class="red">Wrong username/password combo</p>');
-    
-    
+} else {
+    array_push($errors, '<p class="red">Wrong username/password combo!</p>');
     
 } // else
     
@@ -152,21 +137,18 @@ if(mysqli_num_rows($results) == 1 ) {
     
 
     
-} // close count
+}  // close count
+    
+
     
     
     
     
     
-} // close isset
 
-
-
-
-
-
-
-
+    
+    
+}  //  close isset
 
 
 

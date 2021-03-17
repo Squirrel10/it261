@@ -15,8 +15,9 @@ if(isset($_GET['logout'])) {
        header('location:login.php');
 }
 
-include('includes/header.php');
-
+include('includes/header.php'); ?>
+<main>
+<?php    
 //Notification message
 if(isset($_SESSION['success'])):?>
 <div class="seccess">
@@ -36,22 +37,16 @@ if(isset($_SESSION['UserName'])):?>
 <h3> Hello,
 <?php echo $_SESSION['UserName'] ;?>   
 </h3>    
-
+    
 <a href="index.php?logout='1' ">Log out!</a>        
 </div>    
     <?php endif; ?>
 
-<h1>Welcome to our home page!</h1>
-        
-
-<wrapper>
-
-<img src="images/abides.jpg" alt="cookie" width="300" height="200">
-
-</wrapper>
-
-
-
+<h1>Welcome to our Test page!</h1>
+</main>
+<aside>
+<h3>This is my aside</h3>
+</aside>
 
 </div>
 <?php include('includes/footer.php');
