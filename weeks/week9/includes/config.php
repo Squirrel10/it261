@@ -16,20 +16,6 @@ include('credentials.php');
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 	
 function myError($myFile, $myLine, $errorMsg)
 {
@@ -47,16 +33,19 @@ if(defined('DEBUG') && DEBUG)
 }
 
 
+
+<?php
+
 define('THIS_PAGE', basename($_SERVER['PHP_SELF']));
 
 
 date_default_timezone_set('America/Los_Angeles');
 
-$nav['about.php']= 'About';
-$nav['contact.php']= 'Contact';
-$nav['project.php']= 'Project';
-$nav['daily.php']= 'Daily';
 $nav['index.php']= 'Home';
+$nav['about.php']= 'About';
+$nav['daily.php']= 'Daily';
+$nav['project.php']= 'Project';
+$nav['contact.php']= 'Contact';
 
 
 function makeLinks ($nav) {
@@ -105,9 +94,9 @@ switch(THIS_PAGE) {
 				break;
 		
 		
-		case'people.php' :
-		$title = 'People!'; 
-		$body ='people';
+		case'project.php' :
+		$title = 'Project!'; 
+		$body ='Project';
 				break;
 		
 		
@@ -117,10 +106,7 @@ switch(THIS_PAGE) {
 		$body ='contact';
 				break;
 		
-		case'gallery.php' :
-		$title = 'Gallery'; 
-		$body ='contact';
-				break;
+
 		
 	}
 	
@@ -141,5 +127,11 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
     
     
 } // closing sever request
+
+
+
+
+
+
 
 
